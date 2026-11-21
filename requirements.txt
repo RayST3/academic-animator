@@ -1,0 +1,13 @@
+# 🚨 SECRET PROJECT — DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.
+# Remove the whole academic-animator/ folder (and any copies/zips) the day
+# before the event. Do not redistribute.
+#
+# Pinned to the versions this bundle was built and verified against.
+# Python 3.10–3.12 recommended.
+
+agno==2.6.18
+google-genai==2.5.0          # Gemini model backend used by agno
+manim==0.20.1                # Manim Community Edition (rendering engine)
+manim-voiceover[gtts]==0.4.0 # voiceover layer; pulls gTTS, mutagen, sox wrapper
+python-dotenv==1.2.2         # loads GOOGLE_API_KEY from .env
+sqlalchemy

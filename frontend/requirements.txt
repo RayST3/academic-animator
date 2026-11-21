@@ -1,0 +1,18 @@
+# 🚨 SECRET PROJECT — DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.
+# Remove the whole academic-animator/ folder (and any copies/zips) the day
+# before the event. Do not redistribute.
+#
+# Full stack for the chat frontend: the animator's own deps (it gets imported)
+# plus Gradio for the UI. Installing this alone gives a working frontend.
+# Python 3.10–3.12 recommended.
+
+# --- animator core (same pins as ../requirements.txt) ---
+agno==2.6.18
+google-genai==2.5.0          # Gemini model backend used by agno
+manim==0.20.1                # Manim Community Edition (rendering engine)
+manim-voiceover[gtts]==0.4.0 # voiceover layer; pulls gTTS, mutagen, sox wrapper
+python-dotenv==1.2.2         # loads GOOGLE_API_KEY from .env
+sqlalchemy
+
+# --- web UI ---
+gradio>=4.44,<6              # chat frontend (app.py)
