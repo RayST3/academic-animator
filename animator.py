@@ -38,7 +38,7 @@ load_dotenv()
 
 MODEL_ID = "gemini-3.5-flash"
 
-DB_FILE = PROJECT_ROOT / "animator.db"
+DB_FILE = PROJECT_ROOT / "tmp" / "animator.db"
 MANIM_OUTPUT_DIR = PROJECT_ROOT / "tmp" / "manim"
 MANIM_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
