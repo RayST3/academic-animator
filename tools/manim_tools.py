@@ -119,7 +119,7 @@ class ManimTools(Toolkit):
         timeout_seconds: int = 900,
         max_duration_seconds: float = 120.0,
         max_inline_bytes: int = 25 * 1024 * 1024,
-        quality: str = "m",
+        quality: str = "l",
         python_executable: Optional[str] = None,
         delete_after_render: bool = True,
         enable_voiceover: bool = False,
