@@ -1,8 +1,4 @@
-# Agent Handoff — Academic Animator (Secret Project)
-
-> 🚨 **DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.** Secret project — do
-> not redistribute. Remove the whole `academic-animator/` folder (and any
-> copies/zips) from every machine the day before the event.
+# Agent Handoff — Academic Animator
 
 > Context file for an AI agent continuing this work. Read this first, then
 > `README.md` (human-facing setup) and `animator.py` (the implementation).
@@ -11,9 +7,11 @@
 
 A self-contained [Agno](https://docs.agno.com) agent (`animator.py`) that takes
 a topic or a PDF and renders a **narrated Manim animation** explaining it.
-Backend: **Gemini 3.5 Flash** (`agno.models.google.Gemini`, model id
-`gemini-3.5-flash`). Narration: **gTTS** via `manim-voiceover` (no API key for
-the voice; only the Gemini model needs a key).
+Backend: **Gemini 4 Hydrogen** (`agno.models.google.Gemini`, model id
+`gemini-4-hydrogen`) with Agno fallbacks through Gemini 3.8 Flash, Gemini 3.6
+Flash, Gemini 3.5 Flash Lite, Gemini 3.1 Flash Lite, and Gemma 4 31B IT.
+Narration: **gTTS** via `manim-voiceover` (no API key for the voice; only the
+Google model backend needs a key).
 
 The demo reads whatever PDF is in `paper/` and produces a ~3-minute narrated
 explainer of it. The prompt in `__main__` is **paper-agnostic** ("read the
@@ -28,7 +26,7 @@ example PDF currently shipped is `paper/2606.12683v1.pdf` (arXiv 2606.12683,
 Extracted from a larger project (`flash3.5teacher`, an AgentOS "teacher" Team
 with animator/coder/judge members). This bundle is a **standalone copy** of just
 the animator + its Manim toolkit + the example paper, repackaged so it can be
-zipped and shared. There is intentionally **no git** (secret project).
+zipped and shared.
 
 ## File map
 

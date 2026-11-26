@@ -1,20 +1,13 @@
-# Academic Animator (Secret Project)
+# Academic Animator
 
 A self-contained [Agno](https://docs.agno.com) agent that reads a topic (or a
 PDF) and renders a **narrated Manim animation** explaining it. Powered by
-Gemini 3.5 Flash, with voiceover via gTTS.
+Gemini 4 Hydrogen, with automatic fallbacks across the configured Gemini and
+Gemma models, and voiceover via gTTS.
 
 Out of the box, running it reads the example paper bundled in `paper/` and
 produces a ~3-minute narrated explainer of it. Swap in your own PDF anytime
 (see [Use your own paper](#use-your-own-paper)).
-
-> ⚠️ Confidential — secret internal project. Do not redistribute.
->
-> 🚨 **DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.** Remove the whole
-> `academic-animator/` folder (and any copies/zips) from every machine the day
-> before the event.
-
----
 
 ## What's in this folder
 

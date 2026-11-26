@@ -1,16 +1,13 @@
 # Frontend — Academic Animator (chat UI)
 
-> 🚨 **DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.** Secret project —
-> do not redistribute. Remove the whole `academic-animator/` folder (and any
-> copies/zips) from every machine the day before the event.
-
 A lightweight **chat app** ([Gradio](https://www.gradio.app/)) wired to the
 `animator` agent. Send a message and/or attach files (PDFs, images, text); the
 agent runs through agno's built-in `.run()` and replies in the chat. When it
 renders a Manim video, the video plays inline.
 
-The conversation has memory — a fixed agno session id means follow-up messages
-build on earlier ones ("make it shorter", "now do the same for X").
+Each conversation has its own UUID-backed Agno session, so follow-up messages
+build on the selected conversation without mixing it with other demos. Saved
+conversations appear in the sidebar and can be reopened or deleted.
 
 ---
 
@@ -70,10 +67,17 @@ To expose it on your network (e.g. for teammates on the same LAN), edit the
 - `app.py` adds the project root to `sys.path` and does `from animator import
   animator` — it reuses the exact same agent the CLI uses, so model, tools,
   voiceover, and quality settings all match.
+- The **New conversation** button generates a UUID. That UUID is passed as the
+  Agno `session_id`, isolating its database history from every other chat.
+- Saved Agno sessions are listed in the sidebar. Selecting one loads its runs
+  and persisted video file paths from SQLite; the first prompt becomes its
+  display title. Gradio streams each file by path rather than embedding the
+  video bytes in the database or model context.
 - Uploaded files are sorted into agno `Image` / `File` media and passed to
   `animator.run(...)`. Text-only messages just run as a prompt.
-- After the run, the newest `.mp4` under `../tmp/manim/` is shown in the chat
-  (the agent keeps renders on disk, `delete_after_render=False`).
+- After the run, the newest `.mp4` under `../tmp/manim/` is shown in the chat.
+  The renderer returns only its save path to the model; video bytes are never
+  sent back as model input.
 
 ## Troubleshooting
 

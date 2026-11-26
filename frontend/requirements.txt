@@ -1,7 +1,3 @@
-# 🚨 SECRET PROJECT — DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.
-# Remove the whole academic-animator/ folder (and any copies/zips) the day
-# before the event. Do not redistribute.
-#
 # Full stack for the chat frontend: the animator's own deps (it gets imported)
 # plus Gradio for the UI. Installing this alone gives a working frontend.
 # Python 3.10–3.12 recommended.

@@ -1,13 +1,9 @@
-# 🚨 SECRET PROJECT — DELETE THIS ENTIRE BUNDLE THE DAY BEFORE THE EVENT.
-# Remove the whole academic-animator/ folder (and any copies/zips) from every
-# machine the day before the event. Do not redistribute.
-
 """Animator — a self-contained Agno agent that writes a Manim Scene subclass
 and renders it into a narrated mp4.
 
-Powered by Gemini 3.5 Flash. The agent is fully self-sufficient: it builds its
-own model, database, and Manim tooling, so you can either import `animator`
-from this module or run it directly:
+Powered by Gemini 4 Hydrogen with automatic model fallbacks. The agent is fully
+self-sufficient: it builds its own model, database, and Manim tooling, so you
+can either import `animator` from this module or run it directly:
 
     python animator.py
 
@@ -36,7 +32,13 @@ from tools.manim_tools import ManimTools
 
 load_dotenv()
 
-MODEL_ID = "gemini-3.5-flash"
+MODEL_ID = "gemini-4-hydrogen"
+FALLBACK_MODEL_IDS = [
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemma-4-31b-it",
+    "gemini-3.1-flash-lite",
+]
 
 DB_FILE = PROJECT_ROOT / "tmp" / "animator.db"
 MANIM_OUTPUT_DIR = PROJECT_ROOT / "tmp" / "manim"
@@ -49,8 +51,9 @@ animator = Agent(
     "and renders it into an mp4. Use for any concept that benefits "
     "from a visual: math (limits, derivatives, integrals, linear algebra), "
     "CS (sorting, traversal, recursion), engineering (forces, circuits, "
-    "waves), physics. The video is attached to the response automatically.",
+    "waves), physics. The rendered video is saved to disk for the frontend.",
     model=Gemini(id=MODEL_ID),
+    fallback_models=[Gemini(id=model_id) for model_id in FALLBACK_MODEL_IDS],
     debug_mode=True,
     db=SqliteDb(db_file=str(DB_FILE)),
     tools=[
@@ -87,8 +90,8 @@ animator = Agent(
         "code, and retry once. If it fails again, explain the failure to "
         "the student in plain English.",
         "After a successful render, write a 1-3 sentence caption explaining "
-        "what the animation shows. The video will be displayed inline by "
-        "the frontend.",
+        "what the animation shows. Do not ask for or expect the video back; "
+        "the frontend displays the persisted file directly.",
         "Prefer dark backgrounds and bold colors (BLUE, TEAL, YELLOW).",
         "LaTeX is NOT installed, so AVOID `Tex`, `MathTex`, and any LaTeX-backed "
         "mobject — they shell out to `latex` and the render crashes with a "
